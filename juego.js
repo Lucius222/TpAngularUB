@@ -5,12 +5,15 @@ app.controller("controljuego",function($scope){
 	$scope.datos.numerosecreto= Math.floor((Math.random() * 100) + 1);
 	$scope.datos.contador=0;
 	$scope.datos.numero=0;
+	$scope.datos.nombre;
 		$scope.jugar=function(){
 
 
 			if ($scope.datos.numero == $scope.datos.numerosecreto)
 			{
-				alert("Gano")
+				alert("Gano"); 
+				//firebase.database().ref("adivina/").push({nombre:"NN",numero:"33",intentos:"5"});
+				firebase.database().ref("adivina/").push({nombre:$scope.datos.nombre ,numero:$scope.datos.numerosecreto ,intentos:$scope.datos.contador});
 				switch($scope.datos.contador)
 				{
 					case 0 : alert("Mentalista");
