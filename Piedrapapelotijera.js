@@ -42,6 +42,7 @@ app.controller("controlPiedrapapelotijera",function($scope){
 			}
 		}
 		firebase.database().ref("Piedrapapelotijera/").push($scope.datos);
+		window.location="index.html";
 	} // finalizacion piedra
 	
 
@@ -64,6 +65,7 @@ app.controller("controlPiedrapapelotijera",function($scope){
 			break;
 		}
 		firebase.database().ref("Piedrapapelotijera/").push($scope.datos);
+		window.location="index.html";
 	}
 	
 
@@ -89,6 +91,7 @@ app.controller("controlPiedrapapelotijera",function($scope){
 			}
 		}
 		firebase.database().ref("Piedrapapelotijera/").push($scope.datos);
+		window.location="index.html";
 	}
 
 });

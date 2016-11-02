@@ -6,44 +6,51 @@ app.controller("controlAgilidad",function($scope){
 	$scope.datos.Numero1= Math.floor((Math.random() * 10) + 1);
 	$scope.datos.Numero2= Math.floor((Math.random() * 10) + 1);
 	$scope.datos.Signo="+";
-	$scope.datos.Resultado="Signo";
+	$scope.datos.Resultado="";
 	$scope.datos.TiempoTranscurrido="";
 	$scope.datos.NumeroSigno= Math.floor((Math.random() * 3) + 1)
-	var Tiempo1=new Time().tostring ();
+	
 
 	$scope.Aceptar=function()
 	{
+		var Tiempo2=new Date();
+			Tiempo2= Tiempo2.getTime();
+			$scope.datos.TiempoTranscurrido= Tiempo2 - Tiempo1;
 		if 	($scope.datos.Resultado==$scope.datos.Respuesta)
 			{
-				alert ("Ganaste");
 				$scope.datos.gano="Si";
+				firebase.database().ref("Agilidad/").push($scope.datos);
+				alert ("Ganaste "+$scope.datos.TiempoTranscurrido/1000+" Segundos");
 			}	
 		else 
 			{
-				alert ("Intenta de nuevo");
 				$scope.datos.gano="No";
+				firebase.database().ref("Agilidad/").push($scope.datos);
+				alert ("Perdiste");
 			}
-			var Tiempo2=new Time().tostring ();
-			$scope.datos.TiempoTranscurrido= Tiempo2 - Tiempo1;
-		firebase.database().ref("Agilidad/").push($scope.datos);
+		console.info ($scope.datos);
+		setTimeout(function() {window.location="index.html";}, 1500);
+		
 			
 	}
 	switch($scope.datos.NumeroSigno)
 				{
 					case 1 : 
 					$scope.datos.Signo="+";
-					$scope.datos.resultado= $scope.datos.Numero1 + $scope.datos.Numero2;
+					$scope.datos.Resultado= $scope.datos.Numero1 + $scope.datos.Numero2;
 					break;
 					case 2 :
 					$scope.datos.Signo="-";
-					$scope.datos.resultado= $scope.datos.Numero1 - $scope.datos.Numero2;
+					$scope.datos.Resultado= $scope.datos.Numero1 - $scope.datos.Numero2;
 					break;
 					case 3 : 
 					$scope.datos.Signo="*";
-					$scope.datos.resultado= $scope.datos.Numero1 * $scope.datos.Numero2;
+					$scope.datos.Resultado= $scope.datos.Numero1 * $scope.datos.Numero2;
 					break;
 					
 				}
 				console.info ($scope.datos);
+				var Tiempo1=new Date();
+		Tiempo1= Tiempo1.getTime();
 
 });
