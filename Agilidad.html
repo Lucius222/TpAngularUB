@@ -21,19 +21,22 @@
 </script>
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 		<!--Lógica-Programación-->
-		<script type="text/javascript" src="Piedrapapelotijera.js"></script>
+		<script type="text/javascript" src="Agilidad.js"></script>
         <!--Final de Lógica-Programación -->
 		
 
 		</head>
-	<body ng-app="Piedrapapelotijera" ng-controller="controlPiedrapapelotijera">
+	<body ng-app="Agilidad" ng-controller="controlAgilidad">
 		<div class="CajaUno animated bounceInDown">
 			
 		
-			<form id="FormIngreso">
-			<input type="text"  placeholder="Numero 1" ng-model="datos.Numero1" id="Numero1">
-			<input type="text"  placeholder="Signo" ng-model="datos.Signo" id="Signo">
-			<input type="text"  placeholder="Numero 2" ng-model="datos.Numero 2" id="Numero 2">
+		
+			<form id="FormIngreso"> 
+			<input type="text"  placeholder="Numero 1" ng-model="datos.Numero1" id="Numero1" readonly>
+			<input type="text"  placeholder="Signo" ng-model="datos.Signo" id="Signo" readonly>
+			<input type="text"  placeholder="Numero 2" ng-model="datos.Numero2" id="Numero 2" readonly>
+			<input type="text"  placeholder="Respuesta" ng-model="datos.Respuesta" id="Respuesta">
+			<button  class="MiBotonUTN" ng-click="Aceptar()" >Aceptar</button>
 				<center>
 					<img src="imagenes/interrogacion.jpg" >
 				</center>

@@ -1,94 +1,49 @@
-var app= angular.module("Piedrapapelotijera",[]);
+var app= angular.module("Agilidad",[]);
 
-app.controller("controlPiedrapapelotijera",function($scope){
+app.controller("controlAgilidad",function($scope){
 	$scope.datos={};
-	$scope.datos.resultado="";
-	$scope.datos.fecha="";
-	$scope.datos.numerosecreto= Math.floor((Math.random() * 3) + 1);
-	switch($scope.datos.numerosecreto)
+	$scope.datos.gano="";
+	$scope.datos.Numero1= Math.floor((Math.random() * 10) + 1);
+	$scope.datos.Numero2= Math.floor((Math.random() * 10) + 1);
+	$scope.datos.Signo="+";
+	$scope.datos.Resultado="Signo";
+	$scope.datos.TiempoTranscurrido="";
+	$scope.datos.NumeroSigno= Math.floor((Math.random() * 3) + 1)
+	var Tiempo1=new Time().tostring ();
+
+	$scope.Aceptar=function()
+	{
+		if 	($scope.datos.Resultado==$scope.datos.Respuesta)
+			{
+				alert ("Ganaste");
+				$scope.datos.gano="Si";
+			}	
+		else 
+			{
+				alert ("Intenta de nuevo");
+				$scope.datos.gano="No";
+			}
+			var Tiempo2=new Time().tostring ();
+			$scope.datos.TiempoTranscurrido= Tiempo2 - Tiempo1;
+		firebase.database().ref("Agilidad/").push($scope.datos);
+			
+	}
+	switch($scope.datos.NumeroSigno)
 				{
 					case 1 : 
-					$scope.datos.eleccion="piedra";
+					$scope.datos.Signo="+";
+					$scope.datos.resultado= $scope.datos.Numero1 + $scope.datos.Numero2;
 					break;
 					case 2 :
-					$scope.datos.eleccion="papel";
+					$scope.datos.Signo="-";
+					$scope.datos.resultado= $scope.datos.Numero1 - $scope.datos.Numero2;
 					break;
 					case 3 : 
-					$scope.datos.eleccion="tijera";
+					$scope.datos.Signo="*";
+					$scope.datos.resultado= $scope.datos.Numero1 * $scope.datos.Numero2;
 					break;
 					
 				}
-	// console.info($scope.datos);
-
-	$scope.piedra=function(){
-		console.log("Piedra");
-		$scope.datos.fecha= new Date().toString();
-		if($scope.datos.eleccion== "piedra")
-		{
-			alert("Empate"); 
-			$scope.datos.resultado= "Empate";
-		}
-		else 
-		{
-			if ($scope.datos.eleccion=="papel")
-			{
-				alert("Perdio");
-				 $scope.datos.resultado="Perdio";
-			}
-			else
-			{
-				alert("Gano");
-				$scope.datos.resultado="Gano";
-			}
-		}
-		firebase.database().ref("Piedrapapelotijera/").push($scope.datos);
-	} // finalizacion piedra
-	
-
-	$scope.papel=function(){
-		console.log("Papel");
-		$scope.datos.fecha= new Date().toString();
-		switch($scope.datos.eleccion)
-		{
-			case "piedra":
-				alert("Gano");
-				$scope.datos.resultado="Gano";
-			break;
-			case "papel":
-				alert("Empate");
-				$scope.datos.resultado="Empate";
-			break;
-			case "tijera":
-				alert("Perdio")
-				$scope.datos.resultado="Perdio";
-			break;
-		}
-		firebase.database().ref("Piedrapapelotijera/").push($scope.datos);
-	}
-	
-
-	$scope.tijera=function(){
-		console.log("Tijera");
-		$scope.datos.fecha= new Date().toString();
-		if($scope.datos.eleccion== "piedra")
-		{
-			alert("Perdio")
-			$scope.datos.resultado="Perdio";
-		}
-		else 
-		{
-			if ($scope.datos.eleccion=="papel")
-			{
-				alert("Gano")
-				$scope.datos.resultado="Gano";
-			}
-			else
-			{
-				alert("Empate")
-				$scope.datos.resultado="Empate";
-			}
-		}
-		firebase.database().ref("Piedrapapelotijera/").push($scope.datos);
-	}
+				console.info ($scope.datos);
 
 });
