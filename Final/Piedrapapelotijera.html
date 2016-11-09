@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Curso Ingreso UTN FRA</title>
+
+		<!--Estilos-->
+		<link rel="stylesheet" type="text/css" href="estilo.css">
+		<link rel="stylesheet" type="text/css" href="animacion.css">
+		<!--final de Estilos-->
+		<script src="https://www.gstatic.com/firebasejs/3.5.1/firebase.js"></script>
+		<script>  // Initialize Firebase
+  			var config = {
+    		apiKey: "AIzaSyDBt83JvkcBx4UxZY1jJImGeK2xm1MLzl8",
+    		authDomain: "juego-6910e.firebaseapp.com",
+   			 databaseURL: "https://juego-6910e.firebaseio.com",
+    		storageBucket: "juego-6910e.appspot.com",
+   		 messagingSenderId: "929049169152"
+  };
+  firebase.initializeApp(config);
+</script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<!--Lógica-Programación-->
+		<script type="text/javascript" src="Piedrapapelotijera.js"></script>
+        <!--Final de Lógica-Programación -->
+		
+
+		</head>
+	<body ng-app="Piedrapapelotijera" ng-controller="controlPiedrapapelotijera">
+		<div class="CajaUno animated bounceInDown">
+			
+		
+			<form id="FormIngreso">
+			<input type="text"  placeholder="Ingrese nombre" ng-model="datos.nombre" id="nombre">
+				<center>
+					<img src="imagenes/interrogacion.jpg" >
+				</center>
+				
+			</form>
+			
+		</div>
+		<div class="CajaUno animated bounceInLeft">
+			
+
+			
+			
+			<img class="PiedraPapelTijera animated zoomInRight " src="imagenes/piedra.jpg" ng-click="piedra()">
+			<img class="PiedraPapelTijera animated zoomInUp" src="imagenes/papel.jpg" ng-click="papel()">
+			<img class="PiedraPapelTijera animated zoomInLeft"  src="imagenes/tijera.jpg" ng-click="tijera()">
+			
+			
+
+			
+
+
+		</div>
+
+		<div class="CajaEnunciado animated bounceInLeft">
+			<h2>Como funciona:</h2>
+			
+				<h3>
+						Es simple, como ya habras jugado varias veces:
+						</br>Elige una opcion, la maquina ya genero una al cargar la pagina.
+						</br>Al seleccionar la imagen, se dara el resultado de la comparacion entre tu seleccion y la que previamente selecicono el programa. Que el mejor gane!!!
+
+				</h3>
+			
+			
+		</div>
+
+		<div class="CajaAbajo animated bounceInUp">
+			<a style=" margin-top: -10%;"  class="MiBotonUTNLinea" onclick="location.href='index2.html'" >Al menu principal</a>	
+		</div>
+	</body>
+</html>
